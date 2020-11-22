@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/bdc59ad6b0.js" crossorigin="anonymous"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -49,9 +49,11 @@
                 <h1>For Images: </h1>
                 <li>Take a Picture of your document</li>
                 <li>Click on the Upload Button</li>
-                <li>Wait for the transcription</li>
-                <li>Click on download to save the PDF</li>
+                <li>Enter email</li>
+                <li>Check email for transcribed notes</li>
             </ul>
+
+            <img src="ass/how1.png" class="how1">
         </div>
         <br> <br> <br> <br> <br>
         <div data-aos="fade-right">
@@ -59,8 +61,8 @@
                 <h1>For Audio: </h1>
                 <li>Take an audio file of your recording</li>
                 <li>Click on the Upload Button</li>
-                <li>Wait for the transcription</li>
-                <li>Click on download to save the PDF</li>
+                <li>Enter email</li>
+                <li>Check email for transcribed notes</li>
             </ul>
         </div>
 
@@ -73,13 +75,24 @@
         <div class="line"></div>
 
         <div class="upload_top">
-            <h1 class="tits">Upload Your file here!</h1>
+            <h1 class="tits">Upload Your Audio here!</h1>
             <br>
             <progress value="0" max="100" id="uploader"></progress>
             <input type="file" value="upload" id="fileButton">
         </div>
 
+        <br><br><br>
+        <div class="upload_botm">
+            <h1 class="tits">Upload Your Image here!</h1>
+            <br>
+            <progress value="0" max="100" id="uploader2"></progress>
+            <input type="file" value="upload" id="fileButton2">
+        </div>
 
+
+        <a href="https://firebasestorage.googleapis.com/v0/b/cadmus-eba15.appspot.com/o/website%2Foutput.txt?alt=media&token=d82c9be4-2166-40a3-9e92-ba6e249c54b1" download="notes" class="btn" target="\blank">
+            <i class="fa fa-download"></i> Download
+        </a>
     </section>
 
 
@@ -103,7 +116,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
 
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-auth.js"></script>
-
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-database.js"></script>
     <script>
         // Your web app's Firebase configuration
         // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -128,19 +141,21 @@
         var uploader = document.getElementById('uploader');
         var fileButton = document.getElementById('fileButton');
 
+
+
         //listen for file selection 
         fileButton.addEventListener('change', function(e) {
 
             var defaultStorage = firebase.storage();
 
             //get file
-            var file = e.target.files[0];
+            var input = e.target.files[0];
 
             //create storage ref
-            var storageRef = defaultStorage.ref('website/' + file.name);
+            var storageRef = defaultStorage.ref('website/' + "audio");
 
             //upload file 
-            var task = storageRef.put(file);
+            var task = storageRef.put(input);
 
             //update progress bar
             task.on('state_changed',
@@ -148,6 +163,48 @@
                 function progress(snapshot) {
                     var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     uploader.value = percentage;
+                },
+
+                function error(err) {
+                    console.log("you have an error!");
+
+                },
+
+                function complete() {
+                    console.log("successfull upload!");
+                }
+
+            );
+        });
+
+
+
+
+        //get elements 
+        var uploader2 = document.getElementById('uploader2');
+        var fileButton2 = document.getElementById('fileButton2');
+
+
+        //listen for file selection 
+        fileButton2.addEventListener('change', function(e) {
+
+            var defaultStorage2 = firebase.storage();
+
+            //get file
+            var input2 = e.target.files[0];
+
+            //create storage ref
+            var storageRef2 = defaultStorage2.ref('website/' + "input");
+
+            //upload file 
+            var task2 = storageRef2.put(input2);
+
+            //update progress bar
+            task2.on('state_changed',
+
+                function progress(snapshot) {
+                    var percentage2 = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    uploader2.value = percentage2;
                 },
 
                 function error(err) {
