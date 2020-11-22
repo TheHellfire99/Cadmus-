@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
     <title>Cadmus | Home</title>
     <link rel="icon" type="image/png" href="ass/favicon.ico">
     <link rel="stylesheet" href="style.css">
@@ -73,6 +74,10 @@
         <h1 class="title">Image Upload</h1>
         <div class="line"></div>
 
+        <div class="smack_center">
+            <progress value="0" max="100" id="uploader"></progress>
+            <input type="file" value="upload" id="fileButton">
+        </div>
 
     </section>
 
@@ -82,12 +87,24 @@
 
     </section>
 
+
+    <script type="text/javascript" src="particles.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
 
     <!-- TODO: Add SDKs for Firebase products that you want to use
      https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-storage.js"></script>
 
     <script>
         // Your web app's Firebase configuration
@@ -105,17 +122,48 @@
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
+
+
+
+
+        //get elements 
+        var uploader = document.getElementById('uploader');
+        var fileButton = document.getElementById('fileButton');
+
+        //listen for file selection 
+        fileButton.addEventListener('change', function(e) {
+
+            var defaultStorage = firebase.storage();
+
+            //get file
+            var file = e.target.files[0];
+
+            //create storage ref
+            var storageRef = defaultStorage.ref('data/' + file.name);
+
+            //upload file 
+            var task = storageRef.put(file);
+
+            //update progress bar
+            task.on('state_changed',
+
+                function progress(snapshot) {
+                    var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                    uploader.value = percentage;
+                },
+
+                function error(err) {
+                    console.log("you have an error!");
+
+                },
+
+                function complete() {
+                    console.log("successfull upload!")
+                }
+
+            );
+        });
     </script>
-
-    <script type="text/javascript" src="particles.js"></script>
-    <script type="text/javascript" src="app.js"></script>
-    <script type="text/javascript" src="main.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
-    <script>
-        AOS.init();
-    </script>
-
 </body>
 
 </html>
