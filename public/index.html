@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cadmus | Home</title>
+    <link rel="icon" type="image/png" href="ass/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/bdc59ad6b0.js" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <section id="home">
+        <div id="navbar">
+            <a href="#audio">
+                <h1>Audio</h1>
+            </a>
+            <a href="#imag">
+                <h1>Image</h1>
+            </a>
+            <a href="#how">
+                <h1>How to Use!</h1>
+            </a>
+            <a href="#home">
+                <h1>Home</h1>
+            </a>
+        </div>
+
+        <div id="particles-js">
+
+            <div class="center">
+                <h1 class="line-1 anim-typewriter">CADMUS</h1>
+                <h2 class="fade-in">An Innovative Solution To Notes!</h2>
+            </div>
+
+            <a href="#how"><i class="fas fa-chevron-down"></i></a>
+
+        </div>
+
+    </section>
+
+    <section id="how">
+        <h1 class="title">How to Use!</h1>
+        <div class="line"></div>
+        <br> <br>
+
+        <div data-aos="fade-left">
+            <ul class="forImages">
+                <h1>For Images: </h1>
+                <li>Take a Picture of your document</li>
+                <li>Click on the Upload Button</li>
+                <li>Wait for the transcription</li>
+                <li>Click on download to save the PDF</li>
+            </ul>
+        </div>
+        <br> <br> <br> <br> <br>
+        <div data-aos="fade-right">
+            <ul class="forAudio">
+                <h1>For Audio: </h1>
+                <li>Take an audio file of your recording</li>
+                <li>Click on the Upload Button</li>
+                <li>Wait for the transcription</li>
+                <li>Click on download to save the PDF</li>
+            </ul>
+        </div>
+
+
+
+    </section>
+
+    <section id="imag">
+        <h1 class="title">Image Upload</h1>
+        <div class="line"></div>
+
+
+    </section>
+
+    <section id="audio">
+        <h1 class="title">Audio Upload</h1>
+        <div class="line"></div>
+
+    </section>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-analytics.js"></script>
+
+    <script>
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        var firebaseConfig = {
+            apiKey: "AIzaSyCObxou1B_igzkS-8_RMImVsaWjX0V0qGs",
+            authDomain: "cadmus-eba15.firebaseapp.com",
+            databaseURL: "https://cadmus-eba15.firebaseio.com",
+            projectId: "cadmus-eba15",
+            storageBucket: "cadmus-eba15.appspot.com",
+            messagingSenderId: "429388420685",
+            appId: "1:429388420685:web:7070e74b7130f11fcdae04",
+            measurementId: "G-MN3PGPLFZD"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+    </script>
+
+    <script type="text/javascript" src="particles.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        AOS.init();
+    </script>
+
+</body>
+
+</html>

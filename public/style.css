@@ -1,0 +1,209 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
+
+/* 
+ font-family: 'Open Sans', sans-serif;
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.title {
+    font-size: 80px;
+    font-family: 'Open Sans', sans-serif;
+    text-align: center;
+}
+
+.line {
+    height: 2px;
+    width: 150px;
+    background-color: black;
+    margin: 0 auto;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+#navbar {
+    background-color: #333;
+    /* Black background color */
+    position: fixed;
+    /* Make it stick/fixed */
+    top: -100px;
+    /* Hide the navbar 50 px outside of the top view */
+    width: 100%;
+    /* Full width */
+    transition: top 0.3s;
+    /* Transition effect when sliding down (and up) */
+    z-index: 100;
+}
+
+
+/* Style the navbar links */
+
+#navbar a {
+    float: right;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+}
+
+#navbar a:hover {
+    background-color: #30E8BF;
+    color: black;
+}
+
+#home {
+    height: 100vh;
+    background-image: linear-gradient(#360033, #0b8793);
+}
+
+#particles-js {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.line-1 {
+    width: 24em;
+    margin: 0 auto;
+    border-right: 2px solid rgba(255, 255, 255, .75);
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 200px;
+    color: white;
+}
+
+
+/* Animation */
+
+.anim-typewriter {
+    animation: typewriter 4s steps(55) 1s 1 normal both, blinkTextCursor 500ms steps(55) infinite normal;
+}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 5em;
+    }
+}
+
+@keyframes blinkTextCursor {
+    from {
+        border-right-color: rgba(255, 255, 255, 0.75);
+    }
+    to {
+        border-right-color: transparent;
+    }
+}
+
+.fade-in {
+    animation: fadeIn ease 7s;
+    -webkit-animation: fadeIn ease 7s;
+    -moz-animation: fadeIn ease 7s;
+    -o-animation: fadeIn ease 7s;
+    -ms-animation: fadeIn ease 7s;
+    text-align: center;
+    margin: 0 auto;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    color: white;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.fa-chevron-down {
+    position: absolute;
+    top: 95%;
+    left: 50%;
+    transform: translate(-50%, -95%);
+    font-size: 50px;
+    color: white;
+}
+
+#how {
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+#audio {
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+#imag {
+    height: 100vh;
+}
+
+.forImages {
+    font-family: 'Open Sans', sans-serif;
+    padding-left: 50px;
+    font-size: 35px;
+}
+
+.forAudio {
+    font-family: 'Open Sans', sans-serif;
+    padding-right: 50px;
+    font-size: 35px;
+    float: right;
+}
